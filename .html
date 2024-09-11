@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Input Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            height: 40px;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Simple Calculator</h1>
+        <form onsubmit="calculate(event)">
+            <input type="text" id="expression" placeholder="Enter calculation" required>
+            <button type="submit">Calculate</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculate(event) {
+            event.preventDefault();  // Prevent the form from submitting
+
+            let expression = document.getElementById("expression").value;
+            let resultDisplay = document.getElementById("result");
+
+            try {
+                // Evaluate the mathematical expression
+                let result = eval(expression);
+
+                // Display the result
+                resultDisplay.textContent = `Result: ${result}`;
+            } catch (error) {
+                // Display error message if the expression is invalid
+                resultDisplay.textContent = "Invalid Expression!";
+            }
+        }
+    </script>
+</body>
+</html>
